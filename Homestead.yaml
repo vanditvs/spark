@@ -1,0 +1,38 @@
+---
+ip: "192.168.100.10"
+memory: 512
+box: kunalhomestead
+version: ">= 0"
+cpus: 2
+hostname: spark
+name: spark
+provider: virtualbox
+
+authorize: ~/.ssh/homestead.pub
+
+keys:
+    - ~/.ssh/homestead
+
+folders:
+    - map: "F:/www/Spark"
+      to: "/home/vagrant/www/spark"
+
+sites:
+    - map: spark.com
+      to: "/home/vagrant/www/spark/public"
+
+databases:
+    - spark
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
