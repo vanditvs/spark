@@ -5,10 +5,10 @@
     <div class="container">
         <div class="container-sm">
             <div class="form-header">
-                <a href="#" class="logo text-center">
-                  <i class="glyphicon glyphicon-send"></i>
-                  <span>Spark</span>
-              </a>
+                <a href="{{route('index')}}" class="logo text-center">
+                    <img src="{{asset('images/spark-logo.png')}}">
+                    <span>Spark</span>
+                </a>
           </div>
           <div class="signup-container fadeInUp">
               <h1>Reset password.</h1>

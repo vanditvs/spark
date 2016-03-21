@@ -4,7 +4,7 @@
 <div class="background-overlay">
     <div class="container main-header">
         <div class="col-lg-2">
-            <a href="#" class="logo">
+            <a href="{{route('index')}}" class="logo">
                 <img src="{{asset('images/spark-logo.png')}}">
                 <span>Spark</span>
             </a>

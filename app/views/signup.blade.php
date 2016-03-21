@@ -5,7 +5,7 @@
     <div class="container">
         <div class="container-md">
             <div class="form-header">
-                <a href="#" class="logo text-center">
+                <a href="{{route('index')}}" class="logo text-center">
                     <img src="{{asset('images/spark-logo.png')}}">
                     <span>Spark</span>
                 </a>
