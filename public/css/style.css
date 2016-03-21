@@ -10,7 +10,6 @@ body.splash-page{
     background: url(../images/bg1.jpe) #fff;
     background-position: 40%;
     background-size: cover;
-    overflow: hidden;
 }
 .btn-transparent{
     color: #fff;
@@ -24,7 +23,8 @@ body.splash-page{
 }
 .background-overlay{
     background: rgba(0,0,0,0.7);
-    position: absolute;
+    position: fixed;
+    overflow: auto;
     top: 0;
     left: 0;
     right: 0;
@@ -103,8 +103,13 @@ body.splash-page{
 /**
  * Sign up
  */
-.container-sm{
+ .container-sm{
     max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+.container-md{
+    max-width: 500px;
     width: 100%;
     margin: auto;
 }
@@ -130,11 +135,12 @@ body.splash-page{
     color: #fff;
     text-align: center;
     margin-top: 15px;
+    padding-bottom: 30px;
 }
 /**
  * Home page
  */
-.logo{
+ .logo{
     text-align: center;
     margin-top: 20px;
 }
