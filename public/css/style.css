@@ -1,0 +1,143 @@
+html{
+    height: 100%;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    height: 100%;
+}
+body.splash-page{
+    background: url(../images/bg1.jpe) #fff;
+    background-position: 40%;
+    background-size: cover;
+    overflow: hidden;
+}
+.btn-transparent{
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    border: none;
+}
+.btn-transparent:hover{
+    color: #fff;
+    background: rgba(255,255,255,0.4);
+}
+.background-overlay{
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.main-header{
+    margin-top: 80px;
+}
+.logo{
+    display: block;
+    color: #fff;
+    font-size: 30px;
+    font-weight: lighter;
+}
+.logo:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.logo span{
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo img{
+    display: inline-block;
+    vertical-align: middle;
+    width : 50px;
+    height: 50px;
+}
+.main-nav{
+    margin-top: 7px;
+}
+.main-nav a{
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.2);
+    border: none;
+}
+.main-nav a:hover{
+    color: #fff;
+    background: rgba(255,255,255,0.4);
+}
+.intro{
+    background: transparent;
+    color: #fff;
+    margin-top: 250px;
+}
+.intro h1{
+    font-size: 60px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+.intro .tagline{
+    font-size: 25px;
+    font-weight: lighter;
+}
+.main-signup-btn, .explore-btn{
+    text-transform: uppercase;
+    font-weight: lighter;
+    padding: 15px 40px;
+    margin-top: 15px;
+}
+.main-signup-btn span{
+    margin-left: 10px;
+}
+.explore-btn{
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: none;
+    margin-left: 15px;
+}
+.explore-btn:hover{
+    color: #fff;
+    background: rgba(255,255,255,0.4);
+}
+/**
+ * Sign up
+ */
+.container-sm{
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+.signup-container{
+    margin-top: 80px;
+}
+.signup-container h1{
+    text-align: center;
+    color: #fff;
+    padding-bottom: 10px;
+    font-weight: lighter;
+}
+.form-header{
+    padding: 15px;
+}
+.signup-form{
+    background: #fff;
+    box-shadow: 0px 2px 5px rgba(0,0,0, 0.7);
+    border-radius: 5px;
+    padding: 20px;
+}
+.signup-container .form-footer{
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+}
+/**
+ * Home page
+ */
+.logo{
+    text-align: center;
+    margin-top: 20px;
+}
+.navbar-nav{
+    padding-top: 150px;
+}
