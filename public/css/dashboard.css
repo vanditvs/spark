@@ -1,0 +1,65 @@
+body.has-navbar{
+    margin-top: 51px;
+}
+.navbar-logo {
+    padding: 10px 0;
+    display: inline-block;
+}
+.navbar-logo img{
+    width: 30px;
+    height: 30px;
+}
+li.active-success > a{
+  background-color: #5cb85c !important;
+}
+.sidebar{
+    background-color: #222;
+    position: fixed;
+    top: 51px;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+}
+.nav-sidebar > li.active > a,
+.nav-sidebar > li.active > a:hover,
+.nav-sidebar > li.active > a:focus,
+.nav-sidebar > li.active > a:active {
+  color: #069ff6;
+  background-color: #fff;
+}
+.nav-sidebar > li.active > a > i,
+.nav-sidebar > li.active > a:hover > i,
+.nav-sidebar > li.active > a:focus  > i,
+.nav-sidebar > li.active > a:active > i{
+  color: #069ff6;
+}
+.nav-sidebar > li > a{
+  color: #fff;
+  background-color: #222;
+}
+.nav-sidebar > li > a:hover,
+.nav-sidebar > li > a:focus,
+.nav-sidebar > li > a:active{
+  color: #fff;
+  background-color: #069ff6;
+}
+.nav-sidebar > li > a > i,
+.nav-sidebar > li > a:hover > i,
+.nav-sidebar > li > a:active > i {
+    float: left;
+    color : #069ff6;
+}
+.nav-sidebar > li > a:hover > i,
+.nav-sidebar > li > a:focus > i{
+    color : #fff;
+}
+.navbar-main{
+    margin-bottom: 0;
+}
+.navbar-form .form-control{
+    width: 300px;
+}
+.notification-count.unread{
+    background-color: #d9534f;
+    color: #fff;
+}

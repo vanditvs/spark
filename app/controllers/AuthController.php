@@ -66,7 +66,7 @@ class AuthController extends BaseController {
         //Check if validation failed
         if($validator->fails()){
             //Redirect to sign up page with errors and user input
-            return Redirect::route('signup')->withErrors($validator)->withInput(Input::except('password'));;
+            return Redirect::route('signup')->withErrors($validator)->withInput(Input::except('password'));
         }
 
         //Hash password before creating user
