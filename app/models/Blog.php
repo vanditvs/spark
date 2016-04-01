@@ -1,5 +1,5 @@
 <?php
-class Blog extends Eloquent{
+class Blog extends Eloquent {
     protected $table='blogs';
     protected $fillable=array('title', 'slug', 'theme', 'user_id');
 

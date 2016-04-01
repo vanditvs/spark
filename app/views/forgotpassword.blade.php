@@ -9,8 +9,8 @@
                     <img src="{{asset('images/spark-logo.png')}}">
                     <span>Spark</span>
                 </a>
-          </div>
-          <div class="signup-container fadeInUp">
+            </div>
+            <div class="signup-container fadeInUp">
               <h1>Reset password.</h1>
               <div class="signup-form">
                 <form action="login.php" method="post">

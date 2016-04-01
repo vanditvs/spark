@@ -33,7 +33,7 @@ class AuthController extends BaseController {
         //Log in the user
         if(Auth::attempt(array('email' => $input['email'], 'password' => $input['password']), $remember)){
             //User logged in
-            return Redirect::route('index');
+            return Redirect::route('admin');
         }
 
         //Unable to log in user

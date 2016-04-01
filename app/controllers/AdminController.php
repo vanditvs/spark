@@ -4,14 +4,16 @@ class AdminController extends BaseController{
     public function index()
     {
         $blogs = Auth::user()->blogs;
-        $data = array('allblogs' => $blogs, 'pageTitle' => 'Dashboard');
-        return View::make('dashboard')->with($data);
+        $data = array('allblogs' => $blogs, 'pageTitle' => 'Admin');
+        return View::make('admin.index')->with($data);
     }
+
     public function createBlog()
     {
         $data = array('pageTitle' => 'Dashboard');
-        return View::make('create-blog')->with($data);
+        return View::make('admin.blog.create')->with($data);
     }
+
     public function createBlogSubmit()
     {
         //Fetch User Input
@@ -47,6 +49,4 @@ class AdminController extends BaseController{
         //Blog not created, redirect to signup page with error message and user input
         return Redirect::route('create-blog')->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
-
-
 }
