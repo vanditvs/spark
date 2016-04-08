@@ -12,4 +12,14 @@ class Post extends Eloquent {
     {
         return $this->belongsTo('Blog', 'blog_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
+
+    public function likers()
+    {
+        return $this->belongsToMany('User', 'likes', 'post_id', 'user_id');
+    }
 }

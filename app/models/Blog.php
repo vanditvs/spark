@@ -12,4 +12,9 @@ class Blog extends Eloquent {
     {
         return $this->hasMany('Post');
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany('User', 'follows', 'blog_id', 'user_id');
+    }
 }
