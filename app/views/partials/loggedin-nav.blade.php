@@ -24,7 +24,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav">
-        <li><a href="#"><i class="glyphicon glyphicon-fire"></i> Popular</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><i class="glyphicon glyphicon-bell"></i> Notifications <span class="badge notification-count unread">3</span></a></li>

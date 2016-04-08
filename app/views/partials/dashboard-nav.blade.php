@@ -23,7 +23,7 @@
           </a>
           <ul class="dropdown-menu">
             @foreach(Auth::user()->blogs as $blog)
-            <li><a href="#">{{$blog->title}}</a>
+            <li><a href="{{route('manage-blog', array($blog->id))}}">{{$blog->title}}</a>
             </li>
             @endforeach
             <li role="separator" class="divider"></li>
@@ -37,7 +37,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav">
-        <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Popular</a></li>
+        <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><i class="glyphicon glyphicon-bell"></i> Notifications <span class="badge notification-count unread">3</span></a></li>

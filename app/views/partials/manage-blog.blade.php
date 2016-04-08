@@ -2,7 +2,7 @@
     <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
         <div class="dashboard-content">
             <div class="page-header">
-                <h1>$blog['title']; ?> <small> <?php echo count($blog['posts']); ?> Posts</small></h1>
+            <h1>$blog['title']<small> <?php echo count($blog['posts']); ?> Posts</small></h1>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                     <p>
-                                    <a href="edit-post.php?slug=<?php echo getSlug(); ?>&amp;postSlug=<?php echo $latestPostSlug; ?>" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="edit-post.php?slug=<?php echo getSlug(); ?>&amp;postSlug=<?php echo $latestPostSlug; ?>" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="#" class="btn btn-default btn-sm">View</a>
                                     </p>
                                     <small class="text-muted">Posted <b>5 hours ago</b></small>

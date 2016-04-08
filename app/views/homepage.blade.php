@@ -24,7 +24,7 @@
             <a href="{{route('signup')}}" class="btn btn-success btn-lg main-signup-btn">
                 <i class="glyphicon glyphicon-pencil"></i> <span>Get Started</span>
             </a>
-            <a href="#" class="btn btn-default btn-lg explore-btn">
+            <a href="{{route('explore')}}" class="btn btn-default btn-lg explore-btn">
                 Explore
             </a>
         </p>

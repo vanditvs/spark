@@ -16,7 +16,7 @@ class AuthController extends BaseController {
         //Validation Rules
         $rules = array(
             'email' => 'required|email|exists:users',
-            'password' => 'required|min:6'
+            'password' => 'required'
             );
 
         //Validate user input with rules

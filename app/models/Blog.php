@@ -7,4 +7,9 @@ class Blog extends Eloquent {
     {
         return $this->belongsTo('User', 'user_id');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('Post');
+    }
 }
