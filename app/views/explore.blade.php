@@ -1,4 +1,4 @@
-@extends('layouts.loggedin')
+@extends('layouts.global')
 
 @section('site')
 <div class="container">

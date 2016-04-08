@@ -15,10 +15,6 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-
-        <li><a href="{{route('admin')}}"><i class="glyphicon glyphicon-th-large"></i> Go to dashboard</a></li>
-      </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -28,16 +24,8 @@
         <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="glyphicon glyphicon-bell"></i> Notifications <span class="badge notification-count unread">3</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> {{Auth::user()->name}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{route('logout')}}">Log Out</a></li>
-          </ul>
-        </li>
+        <a class="btn btn-sm btn-primary btn-navbar" href="{{route('login')}}"> LOG IN</a>
+        <a class="btn btn-sm btn-success btn-navbar" href="{{route('signup')}}"> SIGN UP</a>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
