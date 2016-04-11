@@ -4,16 +4,16 @@ class ManageBlogController extends BaseController{
 
     public function dashboard($id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::findOrFail($id);
         $latestPost = $blog->posts()->latest()->first();
         $data = array('blog' => $blog, 'latestPost' => $latestPost);
         return View::make('admin.blog.manage')->with($data);
     }
 
-    public function viewPost($id)
+    public function posts($id)
     {
-        $blog = Blog::find($id);
-        $data = array('posts' => $post);
-        return View::make('admin.blog.view')->with($data);
+        $blog = Blog::findOrFail($id);
+        $data = array('blog' => $blog);
+        return View::make('admin.blog.posts')->with($data);
     }
 }

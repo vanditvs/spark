@@ -35,8 +35,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::post('create', array('as' => 'create-blog-submit', 'uses' => 'AdminController@createBlogSubmit'));
 
         Route::get('{id}', array('as' => 'manage-blog', 'uses' => 'ManageBlogController@dashboard'));
-
-        Route::get('view', array('as' => 'view', 'uses' => 'ManageBlogController@viewPost'));
+        Route::get('{id}/posts', array('as' => 'manage-blog-posts', 'uses' => 'ManageBlogController@posts'));
     });
 
 
