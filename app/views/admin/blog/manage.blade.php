@@ -36,6 +36,14 @@
                             <h3 class="panel-title">Recent post</h3>
                         </div>
                         <div class="panel-body">
+                            @if(!$latestPost)
+                            <p>
+                                No post created.
+                            </p>
+                            <p>
+                                <a href="#" class="btn btn-success"> Create new post</a>
+                            </p>
+                            @else
                             <p>
                                 <img class="img-rounded img-responsive" src="https://unsplash.it/600/300/?image=20" alt="post-image">
                             </p>
@@ -62,6 +70,7 @@
                                     <small class="text-muted">Posted <b>{{$latestPost->created_at}}</b></small>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
