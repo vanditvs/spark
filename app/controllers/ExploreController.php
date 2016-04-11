@@ -12,7 +12,7 @@ class ExploreController extends BaseController{
     public function searchPage()
     {
         if(!Input::has('query')){
-            App::abort(500, 'Please enter your query.');
+            return Redirect::route('explore');
         }
 
         $query = Input::get('query');

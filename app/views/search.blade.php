@@ -2,7 +2,7 @@
 
 @section('site')
 <div class="container">
-    <h1 class="page-header">Explore</h1>
+    <h1 class="page-header">Search - {{Input::get('query')}}</h1>
     <div class="row">
         @foreach ($allposts as $post)
         <div class="col-sm-6 col-md-6">
