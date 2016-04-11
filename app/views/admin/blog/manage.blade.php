@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                     <p>
-                                        <a href="edit-post.php?slug=vandit-blog&amp;postSlug=first-post" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{route('edit-blog-post', [$blog->id, $latestPost->id])}}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="#" class="btn btn-default btn-sm">View</a>
                                     </p>
                                     <small class="text-muted">Posted <b>{{$latestPost->created_at}}</b></small>

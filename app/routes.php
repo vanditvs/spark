@@ -35,9 +35,16 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::post('create', array('as' => 'create-blog-submit', 'uses' => 'AdminController@createBlogSubmit'));
 
         Route::get('{id}', array('as' => 'manage-blog', 'uses' => 'ManageBlogController@dashboard'));
+
         Route::get('{id}/posts', array('as' => 'manage-blog-posts', 'uses' => 'ManageBlogController@posts'));
+
+        //create post
         Route::get('{id}/posts/create', array('as' => 'create-blog-post', 'uses' => 'ManageBlogController@createPost'));
         Route::post('{id}/posts/create', array('as' => 'create-blog-post-submit', 'uses' => 'ManageBlogController@createPostSubmit'));
+
+        //edit post
+       Route::get('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post', 'uses' => 'ManageBlogController@editPost'));
+        Route::post('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post-submit', 'uses' => 'ManageBlogController@editPostSubmit'));
     });
 
 

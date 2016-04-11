@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                <textarea name="content" placeholder="Content" required class="form-control input-lg">{{Input::old('content')}}</textarea>
+                <textarea name="content" rows="10" placeholder="Content" required class="form-control input-lg">{{Input::old('content')}}</textarea>
                 </div>
                 {{$errors->first('content', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
             </div>
