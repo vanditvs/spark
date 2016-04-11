@@ -19,11 +19,7 @@
 
         <li><a href="{{route('admin')}}"><i class="glyphicon glyphicon-th-large"></i> Go to dashboard</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </form>
+      @include('partials.navbar-searchform')
       <ul class="nav navbar-nav">
         <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
       </ul>

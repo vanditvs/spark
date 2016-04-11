@@ -15,18 +15,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </form>
-      <ul class="nav navbar-nav">
-        <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <a class="btn btn-sm btn-primary btn-navbar" href="{{route('login')}}"> LOG IN</a>
-        <a class="btn btn-sm btn-success btn-navbar" href="{{route('signup')}}"> SIGN UP</a>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+     @include('partials.navbar-searchform')
+     <ul class="nav navbar-nav">
+      <li><a href="{{route('explore')}}"><i class="glyphicon glyphicon-fire"></i> Explore</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <a class="btn btn-sm btn-primary btn-navbar" href="{{route('login')}}"> LOG IN</a>
+      <a class="btn btn-sm btn-success btn-navbar" href="{{route('signup')}}"> SIGN UP</a>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
 </nav>

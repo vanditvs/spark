@@ -54,3 +54,4 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 });
 
 Route::get('explore', array('as' => 'explore', 'uses' => 'ExploreController@explorePage'));
+Route::get('search', array('as' => 'search', 'uses' => 'ExploreController@searchPage'));
