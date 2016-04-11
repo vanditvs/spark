@@ -6,8 +6,8 @@
         <li class="{{HTML::activeState('manage-blog-posts', [$blog->id], true)}}">
             <a href="{{route('manage-blog-posts', $blog->id)}}"><i class="glyphicon glyphicon-file"></i> Posts</a>
         </li>
-        <li class="{{ isActiveRoute('home') }}">
-            <a href="manage-comments.php"><i class="glyphicon glyphicon-comment"></i> Comments</a>
+        <li class="{{HTML::activeState('manage-blog-comments', [$blog->id], true)}}">
+            <a href="{{route('manage-blog-comments', $blog->id)}}"><i class="glyphicon glyphicon-comment"></i> Comments</a>
         </li>
         <li class="{{ isActiveRoute('home') }}">
             <a href="customize.php"><i class="glyphicon glyphicon-tint"></i> Customize</a>

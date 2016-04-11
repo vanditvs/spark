@@ -116,4 +116,17 @@ class ManageBlogController extends BaseController{
         //Blog not created, redirect to signup page with error message and user input
         return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
+
+    public function comments($id)
+    {
+        $user = Auth::user();
+        $blog = $user->blogs()->findOrFail($id);
+
+        $comments = Comment::whereIn('post_id', function($query) use($blog){
+            $query->select('id')->from('posts')->where('blog_id', $blog->id);
+        })->get();
+        $data = array('blog' => $blog, 'comments' => $comments);
+
+        return View::make('admin.blog.comments')->with($data);
+    }
 }

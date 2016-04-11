@@ -43,8 +43,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::post('{id}/posts/create', array('as' => 'create-blog-post-submit', 'uses' => 'ManageBlogController@createPostSubmit'));
 
         //edit post
-       Route::get('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post', 'uses' => 'ManageBlogController@editPost'));
+        Route::get('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post', 'uses' => 'ManageBlogController@editPost'));
         Route::post('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post-submit', 'uses' => 'ManageBlogController@editPostSubmit'));
+
+        Route::get('{id}/comments', array('as' => 'manage-blog-comments', 'uses' => 'ManageBlogController@comments'));
+
     });
 
 
