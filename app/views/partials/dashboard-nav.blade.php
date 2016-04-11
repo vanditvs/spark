@@ -18,12 +18,13 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Select Blog
+            Select Blog
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             @foreach(Auth::user()->blogs as $blog)
-            <li><a href="{{route('manage-blog', array($blog->id))}}">{{$blog->title}}</a>
+            <li class="{{HTML::activeState('manage-blog', [$blog->id], true)}}">
+              <a href="{{route('manage-blog', array($blog->id))}}">{{$blog->title}}</a>
             </li>
             @endforeach
             <li role="separator" class="divider"></li>
