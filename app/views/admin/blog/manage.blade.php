@@ -4,7 +4,7 @@
     <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
         <div class="dashboard-content">
             <div class="page-header">
-                <h1>{{$blog->title}} <small>Posts</small></h1>
+                <h1>{{$blog->title}} <small>Manage</small></h1>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -41,7 +41,7 @@
                                 No post created.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-success"> Create new post</a>
+                                <a href="{{route('create-blog-post', $blog->id)}}" class="btn btn-success"> Create new post</a>
                             </p>
                             @else
                             <p>

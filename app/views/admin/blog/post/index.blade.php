@@ -3,8 +3,9 @@
 <div class="main">
     <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
         <div class="dashboard-content">
-            <div class="page-header">
-                <h1> <small>Posts</small></h1>
+            <div class="page-header clearfix">
+                <h1 class="pull-left">{{$blog->title}} <small>Posts</small></h1>
+                <a href="{{route('create-blog-post', $blog->id)}}" class="btn btn-primary btn-sm pull-right"> Create post</a>
             </div>
             <div class="row">
             @if(!$blog->posts()->count())
@@ -30,7 +31,7 @@
                                         </small>
                                         <span class="text-muted">|</span>
                                         <small>
-                                            <span class="text-primary"><i class="glyphicon glyphicon-comment"></i></span> Comments
+                                            <span class="text-primary"><i class="glyphicon glyphicon-comment"></i> {{$post->comments()->count()}}</span> Comments
                                         </small>
                                     </div>
                                 </div>
