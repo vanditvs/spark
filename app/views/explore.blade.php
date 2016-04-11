@@ -4,15 +4,33 @@
 <div class="container">
     <h1 class="page-header">Explore</h1>
     <div class="row">
-     @foreach ($allblogs as $blog)
-     <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="https://randomuser.me/api/portraits/men/{{$blog->id}}.jpg" alt="#">
-            <div class="caption">
-                <h2>{{$blog->id . " | " . $blog->title}}</h2>
-                <p>{{$blog->user->name}}</p>
-                <p>{{$blog->created_at}}</p>
-                <p><a href="#" class="btn btn-primary" role="button">Like</a> <a href="#" class="btn btn-default" role="button">View</a></p>
+        @foreach ($allblogs as $blog)
+        <div class="col-sm-6 col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="https://randomuser.me/api/portraits/men/{{$blog->id}}.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#" class="">
+                                {{$blog->title}}
+                            </a>
+                        </h4>
+                        <p><b>{{"@" . $blog->user->username}}</b></p>
+                        <p>
+                            <b>Followers: {{$blog->followers()->count()}}</b>
+                        </p>
+                        <p>
+                            <a href="#" class="btn btn-default" role="button">Follow</a>
+                            <a href="#" class="btn btn-link" role="button">View <i class="glyphicon glyphicon-sunglasses"></i></a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

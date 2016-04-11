@@ -11,6 +11,9 @@ body.splash-page{
     background-position: 40%;
     background-size: cover;
 }
+a:hover{
+    text-decoration: none;
+}
 .btn-transparent{
     color: #fff;
     text-transform: uppercase;

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('site')
 <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
     <div class="dashboard-content">
