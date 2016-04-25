@@ -6,5 +6,8 @@ return [
     ],
     'spark' => [
         'name' => "Official Spark Theme"
-    ]
+    ],
+    'bolt' => [
+        'name' => "Bolt Theme"
+    ],
 ];
