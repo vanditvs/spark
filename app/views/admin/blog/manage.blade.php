@@ -5,7 +5,7 @@
         <div class="dashboard-content">
             <div class="page-header">
                 <h1>{{$blog->title}} <small>Manage</small>
-                {{Form::open(array('route' => ['manage-blog-posts', $blog->id], 'class' => 'pull-right form form-inline'))}}
+                    {{Form::open(array('route' => ['manage-blog-posts', $blog->id], 'class' => 'pull-right form form-inline'))}}
                     <button type="submit" class="btn btn-success btn-sm pull-right"> View Blog</button>
                     {{Form::close()}}
                 </h1>

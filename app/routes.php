@@ -34,8 +34,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         Route::get('create', array('as' => 'create-blog', 'uses' => 'AdminController@createBlog'));
         Route::post('create', array('as' => 'create-blog-submit', 'uses' => 'AdminController@createBlogSubmit'));
 
+        //dashboard
         Route::get('{id}', array('as' => 'manage-blog', 'uses' => 'ManageBlogController@dashboard'));
 
+        //list posts
         Route::get('{id}/posts', array('as' => 'manage-blog-posts', 'uses' => 'ManageBlogController@posts'));
 
         //create post
@@ -45,10 +47,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         //edit post
         Route::get('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post', 'uses' => 'ManageBlogController@editPost'));
         Route::post('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post-submit', 'uses' => 'ManageBlogController@editPostSubmit'));
+        //delete post
         Route::post('{id}/posts/{post_id}/delete', array('as' => 'delete-blog-post', 'uses' => 'ManageBlogController@deletePost'));
 
+        //blog comments
         Route::get('{id}/comments', array('as' => 'manage-blog-comments', 'uses' => 'ManageBlogController@comments'));
+        //delete comment
         Route::post('{id}/comments/{comment_id}/delete', array('as' => 'delete-blog-comment', 'uses' => 'ManageBlogController@deleteComment'));
+
+        //customize blog
+        Route::get('{id}/customize', array('as' => 'manage-blog-customize', 'uses' => 'ManageBlogController@customize'));
+        Route::post('{id}/customize', array('as' => 'manage-blog-submitcustomize', 'uses' => 'ManageBlogController@submitCustomize'));
 
     });
 

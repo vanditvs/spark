@@ -198,4 +198,51 @@ class ManageBlogController extends BaseController{
 
         return Redirect::route('manage-blog-comments', $blog->id)->with(['message' => 'Comment was deleted.']);
     }
+
+    public function customize($id)
+    {
+       $user = Auth::user();
+       $blog = $user->blogs()->findOrFail($id);
+       $Post = $blog->posts();
+       $data = array('blog' => $blog);
+       return View::make('admin.blog.customize')->with($data);
+   }
+
+   public function submitCustomize($id)
+   {
+        $user = Auth::user();
+        $blog = $user->blogs()->findOrFail($id);
+
+        //Fetch User Input
+        $input = Input::only("title", "theme");
+
+        //Validation Rules
+        $rules = array(
+            'title' => 'required|string',
+            'theme' => 'required|string'
+            );
+
+        //Validate user input with rules
+        $validator = Validator::make($input, $rules);
+
+        //Check if validation failed
+        if($validator->fails()){
+            //Redirect to sign up page with errors and user input
+            return Redirect::route('manage-blog-customize', [$blog->id])->withErrors($validator)->withInput($input);
+        }
+
+        $updated = $blog->update([
+            'title' => $input['title'],
+            'theme' => $input['theme']
+            ]);
+
+        //Check if blog updated
+        if($updated){
+            //Blog updated, redirect to customize page
+            return Redirect::route('manage-blog-customize', $blog->id);
+        }
+
+        //Blog not updated, redirect to signup page with error message and user input
+        return Redirect::route('manage-blog-customize', $blog->id)->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
+    }
 }
