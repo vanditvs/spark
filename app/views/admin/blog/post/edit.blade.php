@@ -5,7 +5,7 @@
         <div class="page-header">
             <h1>
                 Edit post
-                {{Form::open(array('route' => ['delete-blog-post', $blog->id, $post->id], 'class' => 'pull-right form form-inline', 'onSubmit' => "return confirm('Want to delete post?');"))}}
+                {{Form::open(array('route' => ['delete-blog-post', $blog->id, $post->id], 'class' => 'pull-right form form-inline', 'onSubmit' => "return confirm('Delete post?');"))}}
                 <button type="submit" class="btn btn-danger btn-sm pull-right"> Delete post</button>
                 {{Form::close()}}
             </h1>

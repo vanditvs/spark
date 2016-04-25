@@ -6,6 +6,11 @@
             <div class="page-header clearfix">
                 <h1 class="pull-left">{{$blog->title}} <small>Comments</small></h1>
             </div>
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
+            </div>
+            @endif
             <div class="row">
                 @if(!count($comments))
                 <div class="alert alert-info">
@@ -34,9 +39,9 @@
                                     <p class="small">
                                         Commented on: {{$comment->created_at}}
                                     </p>
-                                    <p>
-                                        <a href="#" class="btn btn-danger btn-sm" role="button">Delete</a>
-                                    </p>
+                                    {{Form::open(array('route' => ['delete-blog-comment', $blog->id, $comment->id], 'class' => 'form form-inline', 'onSubmit' => "return confirm('Delete comment?');"))}}
+                                    <button type="submit" class="btn btn-danger btn-sm"> Delete</button>
+                                    {{Form::close()}}
                                 </div>
                             </div>
                         </div>

@@ -33,10 +33,10 @@ class ManageBlogController extends BaseController{
         $user = Auth::user();
         $blog = $user->blogs()->findOrFail($id);
 
-        //Fetch User Input
+//Fetch User Input
         $input = Input::only("title", "content", "featured-image");
 
-        //Validation Rules
+//Validation Rules
         $rules = array(
             'title' => 'required|string',
             'content' => 'required|string',
@@ -47,12 +47,12 @@ class ManageBlogController extends BaseController{
             'featured-image.max' => 'Image must be less than 1MB.'
             );
 
-        //Validate user input with rules
+//Validate user input with rules
         $validator = Validator::make($input, $rules, $messages);
 
-        //Check if validation failed
+//Check if validation failed
         if($validator->fails()){
-            //Redirect to sign up page with errors and user input
+//Redirect to sign up page with errors and user input
             return Redirect::route('create-blog-post', [$blog->id])->withErrors($validator)->withInput($input);
         }
 
@@ -75,13 +75,13 @@ class ManageBlogController extends BaseController{
             'user_id' => $user->id,
             ]);
 
-        //Check if blog created
+//Check if blog created
         if($post){
-            //Blog created, redirect to login page
+//Blog created, redirect to login page
             return Redirect::route('manage-blog-posts', $blog->id);
         }
 
-        //Blog not created, redirect to signup page with error message and user input
+//Blog not created, redirect to signup page with error message and user input
         return Redirect::route('create-blog-post', $blog->id)->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
@@ -100,10 +100,10 @@ class ManageBlogController extends BaseController{
         $blog = $user->blogs()->findOrFail($id);
         $post = $blog->posts()->findOrFail($post_id);
 
-        //Fetch User Input
+//Fetch User Input
         $input = Input::only("title", "content", "featured-image");
 
-        //Validation Rules
+//Validation Rules
         $rules = array(
             'title' => 'required|string',
             'content' => 'required|string',
@@ -114,12 +114,12 @@ class ManageBlogController extends BaseController{
             'featured-image.max' => 'Image must be less than 1MB.'
             );
 
-        //Validate user input with rules
+//Validate user input with rules
         $validator = Validator::make($input, $rules, $messages);
 
-        //Check if validation failed
+//Check if validation failed
         if($validator->fails()){
-            //Redirect to sign up page with errors and user input
+//Redirect to sign up page with errors and user input
             return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors($validator)->withInput($input);
         }
 
@@ -147,13 +147,13 @@ class ManageBlogController extends BaseController{
             'featured_image' => $imageName
             ]);
 
-        //Check if blog created
+//Check if blog created
         if($updatePost){
-            //Blog created, redirect to login page
+//Blog created, redirect to login page
             return Redirect::route('edit-blog-post', [$blog->id, $post->id])->with(['message' => 'Post was updated.']);
         }
 
-        //Blog not created, redirect to signup page with error message and user input
+//Blog not created, redirect to signup page with error message and user input
         return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
@@ -179,5 +179,23 @@ class ManageBlogController extends BaseController{
         $data = array('blog' => $blog, 'comments' => $comments);
 
         return View::make('admin.blog.comments')->with($data);
+    }
+
+    public function deleteComment($id, $comment_id)
+    {
+        $user = Auth::user();
+        $blog = $user->blogs()->findOrFail($id);
+
+        $comment = Comment::whereIn('post_id', function($query) use($blog){
+            $query->select('id')->from('posts')->where('blog_id', $blog->id);
+        })->orderBy('id', 'DESC')->find($comment_id);
+
+        if(!$comment){
+            return Redirect::route('manage-blog-comments', $blog->id)->with(['message' => 'Comment not found.']);
+        }
+
+        $comment->delete();
+
+        return Redirect::route('manage-blog-comments', $blog->id)->with(['message' => 'Comment was deleted.']);
     }
 }

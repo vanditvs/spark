@@ -45,10 +45,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         //edit post
         Route::get('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post', 'uses' => 'ManageBlogController@editPost'));
         Route::post('{id}/posts/{post_id}/edit', array('as' => 'edit-blog-post-submit', 'uses' => 'ManageBlogController@editPostSubmit'));
+        Route::post('{id}/posts/{post_id}/delete', array('as' => 'delete-blog-post', 'uses' => 'ManageBlogController@deletePost'));
 
         Route::get('{id}/comments', array('as' => 'manage-blog-comments', 'uses' => 'ManageBlogController@comments'));
-
-        Route::post('{id}/posts/{post_id}/delete', array('as' => 'delete-blog-post', 'uses' => 'ManageBlogController@deletePost'));
+        Route::post('{id}/comments/{comment_id}/delete', array('as' => 'delete-blog-comment', 'uses' => 'ManageBlogController@deleteComment'));
 
     });
 
