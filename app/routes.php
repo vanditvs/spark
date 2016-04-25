@@ -64,5 +64,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
 });
 
+//Global Routes
 Route::get('explore', array('as' => 'explore', 'uses' => 'ExploreController@explorePage'));
 Route::get('search', array('as' => 'search', 'uses' => 'ExploreController@searchPage'));
+
+//Blogs
+Route::get('blogs/{slug}', array('as' => "view-blog", 'uses' => "BlogsController@viewBlog"));
+//Blog Post
+Route::get('blogs/{slug}/posts/{post_slug}', array('as' => "view-blog-post", 'uses' => "BlogsController@viewBlogPost"));

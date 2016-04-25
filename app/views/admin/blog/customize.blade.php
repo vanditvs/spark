@@ -11,6 +11,12 @@
                 {{Session::get('message')}}
             </div>
             @endif
+
+            @if(Session::has('error_message'))
+            <div class="alert alert-danger">
+                {{Session::get('error_message')}}
+            </div>
+            @endif
             {{Form::open(array('route' => ['manage-blog-submitcustomize', $blog->id]))}}
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -21,7 +27,29 @@
                 </div>
                 <div class="col-lg-12 col-md-12">
                     <div class="form-group">
-                        <input type="text" name="theme" value="{{Input::old('theme') ? Input::old('theme') : $blog->theme}}" placeholder="Theme" required class="form-control input-lg">
+                        @foreach($availableThemes as $alias => $theme)
+                        <div class="col-lg-4">
+                            <div class="thumbnail">
+                                <img src="{{themePreview($alias)}}" class="featured-image">
+                                <div class="caption">
+                                    <h3>
+                                        {{$theme['name']}}
+                                    </h3>
+                                    <p>
+                                        @if($alias === $blog->theme)
+                                        <label class="btn btn-primary btn-block">
+                                            <input type="radio" checked name="theme" value="{{$alias}}"> Select
+                                        </label>
+                                        @else
+                                        <label class="btn btn-primary btn-block">
+                                            <input type="radio" name="theme" value="{{$alias}}"> Select
+                                        </label>
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                     {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
                 </div>

@@ -203,8 +203,10 @@ class ManageBlogController extends BaseController{
     {
        $user = Auth::user();
        $blog = $user->blogs()->findOrFail($id);
-       $Post = $blog->posts();
-       $data = array('blog' => $blog);
+
+       $availableThemes = Config::get('themes');
+
+       $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
        return View::make('admin.blog.customize')->with($data);
    }
 
@@ -221,6 +223,12 @@ class ManageBlogController extends BaseController{
             'title' => 'required|string',
             'theme' => 'required|string'
             );
+
+        $availableThemes = Config::get('themes');
+
+        if(!isset($availableThemes[$input['theme']])) {
+            return Redirect::route('manage-blog-customize', [$blog->id])->with(['error_message' => "Invalid theme!"])->withInput($input);
+        }
 
         //Validate user input with rules
         $validator = Validator::make($input, $rules);

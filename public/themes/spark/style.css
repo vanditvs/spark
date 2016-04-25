@@ -1,0 +1,40 @@
+html, body {
+    background: #31293C;
+    color: #fff;
+    height: 100%;
+}
+
+.theme-content > a {
+    color: #fff;
+}
+
+.theme-content .blog-title {
+    border-bottom: solid 1px rgba(255,255,255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.theme-content .blog-title > a {
+    color: #fff;
+}
+
+.theme-content .blog-title > .blog-author {
+    float: right;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.theme-content > .container {
+    width: 700px;
+    margin: auto;
+}
+
+.theme-content{
+    margin-top: 50px;
+}
+
+.theme-content .blog-post > .featured-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}

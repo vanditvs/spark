@@ -48,3 +48,21 @@ function featuredImage($name = null)
 
     return asset('images/featured-image.png');
 }
+
+function themePreview($theme)
+{
+    return url('/').'/themes/'.$theme."/preview.png";
+}
+
+function themeName($theme)
+{
+    $availableThemes = Config::get('themes');
+
+    $theme = isset($availableThemes[$theme]) ? $availableThemes[$theme] : false;
+
+    if(!$theme) {
+        return "";
+    }
+
+    return $theme['name'];
+}
