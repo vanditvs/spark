@@ -39,3 +39,12 @@ HTML::macro('activeState', function($route, $params = array(), $nested = false, 
         return strpos(Request::url(), route($route, $params)) !==false ? $class : '';
     }
 });
+
+function featuredImage($name = null)
+{
+    if($name) {
+        return url('/').'/uploads/posts/'.$name;
+    }
+
+    return asset('images/featured-image.png');
+}

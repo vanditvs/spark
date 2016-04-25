@@ -18,7 +18,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <p>
-                                <img class="img-rounded img-responsive" src="https://unsplash.it/600/300/?image=20" alt="post-image">
+                                <img class="img-rounded img-responsive admin-post-image" src="{{featuredImage($post->featured_image)}}" alt="post-image">
                             </p>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

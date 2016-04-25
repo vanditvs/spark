@@ -1,7 +1,7 @@
 <?php
 class Post extends Eloquent {
     protected $table='posts';
-    protected $fillable=array('title', 'slug', 'content', 'blog_id', 'user_id');
+    protected $fillable=array('title', 'slug', 'content', 'blog_id', 'user_id', 'featured_image');
 
     public function user()
     {

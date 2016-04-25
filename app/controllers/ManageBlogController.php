@@ -33,16 +33,21 @@ class ManageBlogController extends BaseController{
         $blog = $user->blogs()->findOrFail($id);
 
         //Fetch User Input
-        $input = Input::only("title", "content");
+        $input = Input::only("title", "content", "featured-image");
 
         //Validation Rules
         $rules = array(
             'title' => 'required|string',
-            'content' => 'required|string'
+            'content' => 'required|string',
+            'featured-image' => 'image|max:1000'
+            );
+
+        $messages = array(
+            'featured-image.max' => 'Image must be less than 1MB.'
             );
 
         //Validate user input with rules
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($input, $rules, $messages);
 
         //Check if validation failed
         if($validator->fails()){
@@ -50,11 +55,21 @@ class ManageBlogController extends BaseController{
             return Redirect::route('create-blog-post', [$blog->id])->withErrors($validator)->withInput($input);
         }
 
+        $imageName = null;
+        if(Input::hasFile('featured-image')){
+            $featured_image = Input::file('featured-image');
+            $extension = $featured_image->getClientOriginalExtension();
+            $path = public_path('uploads/posts');
+
+            $imageName = time().str_random(). '.' .$extension;
+            $featured_image->move($path, $imageName);
+        }
         $input['slug'] = Str::slug($input['title']) . "-" . str_random();
 
         $post = $blog->posts()->create([
             'title' => $input['title'],
             'content' => $input['content'],
+            'featured_image' => $imageName,
             'slug' => $input['slug'],
             'user_id' => $user->id,
             ]);
@@ -85,16 +100,21 @@ class ManageBlogController extends BaseController{
         $post = $blog->posts()->findOrFail($post_id);
 
         //Fetch User Input
-        $input = Input::only("title", "content");
+        $input = Input::only("title", "content", "featured-image");
 
         //Validation Rules
         $rules = array(
             'title' => 'required|string',
-            'content' => 'required|string'
+            'content' => 'required|string',
+            'featured-image' => 'image|max:1000'
+            );
+
+        $messages = array(
+            'featured-image.max' => 'Image must be less than 1MB.'
             );
 
         //Validate user input with rules
-        $validator = Validator::make($input, $rules);
+        $validator = Validator::make($input, $rules, $messages);
 
         //Check if validation failed
         if($validator->fails()){
@@ -102,9 +122,28 @@ class ManageBlogController extends BaseController{
             return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors($validator)->withInput($input);
         }
 
+        $imageName = $post->featured_image;
+
+        if(Input::hasFile('featured-image')){
+            $path = public_path('uploads/posts');
+
+            $featured_image = Input::file('featured-image');
+            $extension = $featured_image->getClientOriginalExtension();
+
+            $imageName = time().str_random().'.'.$extension;
+            $featured_image->move($path, $imageName);
+
+            $oldImage = $path.'/'.$post->featured_image;
+
+            if(File::exists($oldImage)){
+                File::delete($oldImage);
+            }
+        }
+
         $updatePost = $post->update([
             'title' => $input['title'],
-            'content' => $input['content']
+            'content' => $input['content'],
+            'featured_image' => $imageName
             ]);
 
         //Check if blog created
