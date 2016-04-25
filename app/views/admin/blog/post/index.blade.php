@@ -45,7 +45,7 @@
                                         <a href="{{route('edit-blog-post', [$blog->id, $post->id])}}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="#" class="btn btn-default btn-sm">View</a>
                                     </p>
-                                    <small class="text-muted">Posted <b>5 hours ago</b></small>
+                                    <small class="text-muted">Posted <b>{{$post->created_at}}</b></small>
                                 </div>
                             </div>
                         </div>

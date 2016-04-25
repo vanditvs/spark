@@ -15,8 +15,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <h4><span class="label label-default">{{3}}</span> Posts</h4>
-                                <h4><span class="label label-default">7</span> Comments</h4>
+                                <h4><span class="label label-default">{{$blog->posts->count()}}</span> Posts</h4>
+                                <h4><span class="label label-default">{{$blog->followers->count()}}</span> Followers</h4>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                 <p>

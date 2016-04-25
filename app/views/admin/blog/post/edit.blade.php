@@ -41,7 +41,7 @@
                         </div>
                         <div class="panel-footer">
                             <div class="form-group">
-                                <input type="file" name="featured-image" required class="form-control">
+                                <input type="file" name="featured-image" class="form-control">
                             </div>
                             {{$errors->first('featured-image', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
                         </div>
