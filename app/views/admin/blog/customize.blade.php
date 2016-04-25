@@ -6,26 +6,31 @@
             <h1>Customize Blog</h1>
         </div>
         <div class="dashboard-form">
-          {{Form::open() }}
-          <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="title" value="{{Input::old('title') ? Input::old('title') : $blog->title}}" placeholder="Title" required class="form-control input-lg">
-                </div>
-                {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
             </div>
-            <div class="col-lg-12 col-md-12">
-                <div class="form-group">
-                    <input type="text" name="theme" value="{{Input::old('theme') ? Input::old('theme') : $blog->theme}}" placeholder="Theme" required class="form-control input-lg">
+            @endif
+            {{Form::open(array('route' => ['manage-blog-submitcustomize', $blog->id]))}}
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <input type="text" name="title" value="{{Input::old('title') ? Input::old('title') : $blog->title}}" placeholder="Title" required class="form-control input-lg">
+                    </div>
+                    {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
                 </div>
-                {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+                <div class="col-lg-12 col-md-12">
+                    <div class="form-group">
+                        <input type="text" name="theme" value="{{Input::old('theme') ? Input::old('theme') : $blog->theme}}" placeholder="Theme" required class="form-control input-lg">
+                    </div>
+                    {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+                </div>
             </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block btn-lg">Customize Blog</button>
+            </div>
+            {{Form::close()}}
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success btn-block btn-lg">Customize Blog</button>
-        </div>
-        {{Form::close()}}
     </div>
-</div>
 </div>
 @stop

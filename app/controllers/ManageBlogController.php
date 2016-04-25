@@ -239,7 +239,7 @@ class ManageBlogController extends BaseController{
         //Check if blog updated
         if($updated){
             //Blog updated, redirect to customize page
-            return Redirect::route('manage-blog-customize', $blog->id);
+            return Redirect::route('manage-blog-customize', $blog->id)->with(['message' => "Blog updated!"]);
         }
 
         //Blog not updated, redirect to signup page with error message and user input
