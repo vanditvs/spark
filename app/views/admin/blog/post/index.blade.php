@@ -7,12 +7,17 @@
                 <h1 class="pull-left">{{$blog->title}} <small>Posts</small></h1>
                 <a href="{{route('create-blog-post', $blog->id)}}" class="btn btn-primary btn-sm pull-right"> Create post</a>
             </div>
-            <div class="row">
-            @if(!$blog->posts()->count())
-            <div class="alert alert-info">
-                No posts found.
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
             </div>
             @endif
+            <div class="row">
+                @if(!$blog->posts()->count())
+                <div class="alert alert-info">
+                    No posts found.
+                </div>
+                @endif
                 @foreach($posts as $post)
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="panel panel-default">

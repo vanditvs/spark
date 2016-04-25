@@ -48,6 +48,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
         Route::get('{id}/comments', array('as' => 'manage-blog-comments', 'uses' => 'ManageBlogController@comments'));
 
+        Route::post('{id}/posts/{post_id}/delete', array('as' => 'delete-blog-post', 'uses' => 'ManageBlogController@deletePost'));
+
     });
 
 

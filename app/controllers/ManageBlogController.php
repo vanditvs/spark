@@ -157,6 +157,17 @@ class ManageBlogController extends BaseController{
         return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
+    public function deletePost($id, $post_id)
+    {
+        $user = Auth::user();
+        $blog = $user->blogs()->findOrFail($id);
+        $post = $blog->posts()->findOrFail($post_id);
+
+        $post->delete();
+
+        return Redirect::route('manage-blog-posts', $blog->id)->with(['message' => 'Post was deleted.']);
+    }
+
     public function comments($id)
     {
         $user = Auth::user();

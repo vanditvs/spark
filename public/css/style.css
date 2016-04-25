@@ -157,3 +157,7 @@ a:hover{
     width: 100%;
     object-fit: cover;
 }
+
+.page-header .btn{
+    margin-top: 10px;
+}

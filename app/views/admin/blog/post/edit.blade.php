@@ -3,7 +3,12 @@
 <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
     <div class="dashboard-content">
         <div class="page-header">
-            <h1>Edit post</h1>
+            <h1>
+                Edit post
+                {{Form::open(array('route' => ['delete-blog-post', $blog->id, $post->id], 'class' => 'pull-right form form-inline', 'onSubmit' => "return confirm('Want to delete post?');"))}}
+                <button type="submit" class="btn btn-danger btn-sm pull-right"> Delete post</button>
+                {{Form::close()}}
+            </h1>
         </div>
         <div class="dashboard-form">
             @if(Session::has('message'))
