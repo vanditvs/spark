@@ -15,7 +15,8 @@ class ManageBlogController extends BaseController{
     {
         $user = Auth::user();
         $blog = $user->blogs()->findOrFail($id);
-        $data = array('blog' => $blog);
+        $posts = $blog->posts()->orderBy('id', 'DESC')->get();
+        $data = array('blog' => $blog, 'posts' => $posts);
         return View::make('admin.blog.post.index')->with($data);
     }
 
@@ -163,7 +164,7 @@ class ManageBlogController extends BaseController{
 
         $comments = Comment::whereIn('post_id', function($query) use($blog){
             $query->select('id')->from('posts')->where('blog_id', $blog->id);
-        })->get();
+        })->orderBy('id', 'DESC')->get();
         $data = array('blog' => $blog, 'comments' => $comments);
 
         return View::make('admin.blog.comments')->with($data);

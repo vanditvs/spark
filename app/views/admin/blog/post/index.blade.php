@@ -13,7 +13,7 @@
                 No posts found.
             </div>
             @endif
-                @foreach($blog->posts as $post)
+                @foreach($posts as $post)
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
