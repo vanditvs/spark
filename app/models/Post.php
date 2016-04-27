@@ -22,4 +22,9 @@ class Post extends Eloquent {
     {
         return $this->belongsToMany('User', 'likes', 'post_id', 'user_id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('Tag', 'tags', 'post_id', 'tag_id');
+    }
 }
