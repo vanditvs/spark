@@ -5,6 +5,6 @@ class Tag extends Eloquent {
 
     public function posts()
     {
-        return $this->belongsToMany('Post', 'posts', 'tag_id', 'post_id');
+        return $this->belongsToMany('Post', 'posts_tags', 'tag_id', 'post_id');
     }
 }

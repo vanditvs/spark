@@ -61,12 +61,14 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     });
 
-
 });
 
 //Global Routes
 Route::get('explore', array('as' => 'explore', 'uses' => 'ExploreController@explorePage'));
 Route::get('search', array('as' => 'search', 'uses' => 'ExploreController@searchPage'));
+
+//explore-tags
+Route::get('explore/tags/{id}', array('as' => 'explore-tags', 'uses' => 'ExploreController@exploreTags'));
 
 //Blogs
 Route::get('blogs/{slug}', array('as' => "view-blog", 'uses' => "BlogsController@viewBlog"));

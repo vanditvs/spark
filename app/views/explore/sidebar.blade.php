@@ -1,10 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        Tags
+        Popular Tags
     </div>
     <div class="panel-body">
         @foreach ($alltags as $tag)
-        <a class="label label-primary">#{{$tag->name}}</a>
+        <a href="{{route('explore-tags', $tag->id)}}" class="label label-primary">#{{$tag->name}}</a>
         @endforeach
     </div>
 </div>
