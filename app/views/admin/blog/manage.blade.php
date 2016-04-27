@@ -63,7 +63,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                     <p>
                                         <a href="{{route('edit-blog-post', [$blog->id, $latestPost->id])}}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="{{route('view-blog', $blog->slug)}}" class="btn btn-default btn-sm">View</a>
+                                        <a target="_blank" href="{{route('view-blog-post', [$blog->slug, $latestPost->slug])}}" class="btn btn-default btn-sm">View</a>
                                     </p>
                                     <small class="text-muted">Posted <b>{{$latestPost->created_at}}</b></small>
                                 </div>
