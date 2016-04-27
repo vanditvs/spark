@@ -10,7 +10,8 @@ class AdminController extends BaseController{
 
     public function createBlog()
     {
-        $data = array('pageTitle' => 'Dashboard');
+        $availableThemes = Config::get('themes');
+        $data = array('pageTitle' => 'Dashboard', 'availableThemes' => $availableThemes);
         return View::make('admin.blog.create')->with($data);
     }
 

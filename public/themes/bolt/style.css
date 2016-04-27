@@ -4,7 +4,7 @@ html, body{
 }
 
 .theme-content {
-    color: #fff;
+    color : #fff;
     height: 100%;
     position: relative;
 }
@@ -20,13 +20,14 @@ html, body{
 }
 
 .theme-content .blog-title > a {
-    color: rgba(0,0,0, 0.4);
+    color: black;
 }
 
 .theme-content .blog-title > .blog-author {
     float: right;
     font-size: 14px;
     margin-top: 20px;
+    color : black;
 }
 
 .theme-content{

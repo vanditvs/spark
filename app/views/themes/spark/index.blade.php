@@ -16,10 +16,10 @@
         @foreach($posts as $post)
         <div class="thumbnail blog-post">
             <img src="{{featuredImage($post->featured_image)}}" class="featured-image">
-            <div class="caption">
-                <h3>
-                    <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
-                </h3>
+                <div class="caption">
+                    <h3>
+                        <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
+                    </h3>
                 <p>
                     {{$post->content}}
                 </p>

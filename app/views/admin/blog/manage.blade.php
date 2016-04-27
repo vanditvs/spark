@@ -22,9 +22,6 @@
                                     <h4><span class="label label-default"><i class="glyphicon glyphicon-bookmark"></i></span> Current Theme : {{themeName($blog->theme)}}</h4>
                                 </div>
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-right">
-                                    <p>
-                                        <a href="#" class="btn btn-default btn-sm">View</a>
-                                    </p>
                                     <small class="text-muted"> Created <b>{{$blog->created_at}}</b></small>
                                 </div>
                             </div>
@@ -66,7 +63,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                     <p>
                                         <a href="{{route('edit-blog-post', [$blog->id, $latestPost->id])}}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="#" class="btn btn-default btn-sm">View</a>
+                                        <a href="{{route('view-blog', $blog->slug)}}" class="btn btn-default btn-sm">View</a>
                                     </p>
                                     <small class="text-muted">Posted <b>{{$latestPost->created_at}}</b></small>
                                 </div>

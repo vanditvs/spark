@@ -23,10 +23,11 @@
                     <div class="form-group">
                         <input type="text" name="title" value="{{Input::old('title') ? Input::old('title') : $blog->title}}" placeholder="Title" required class="form-control input-lg">
                     </div>
-                    {{$errors->first('theme', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+                    {{$errors->first('title', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
                 </div>
                 <div class="col-lg-12 col-md-12">
                     <div class="form-group">
+                    <h3>Select Theme</h3><br>
                         @foreach($availableThemes as $alias => $theme)
                         <div class="col-lg-4">
                             <div class="thumbnail">

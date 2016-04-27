@@ -2,8 +2,9 @@
 @section('site')
 <div class="main-wrapper col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
     <div class="dashboard-content">
-        <div class="page-header">
-            <h1>Dashboard <small>{{count($allblogs)}} Blogs</small></h1>
+        <div class="page-header clearfix">
+            <h1 class="pull-left">Dashboard <small>{{count($allblogs)}} Blogs</small></h1>
+            <a href="{{route('create-blog')}}" class="btn btn-success btn-sm pull-right"> Create Blog</a>
         </div>
         <div class="row">
             @foreach($allblogs as $blog)

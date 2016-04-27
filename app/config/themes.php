@@ -10,4 +10,7 @@ return [
     'bolt' => [
         'name' => "Bolt Theme"
     ],
+    'nature' => [
+        'name' => "Nature Theme"
+    ],
 ];

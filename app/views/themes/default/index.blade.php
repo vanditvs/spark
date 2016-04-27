@@ -22,7 +22,7 @@
                         <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
                     </h3>
                     <p>
-                        {{substr($post->content, 0, 200)}}
+                        {{substr($post->content, 0, 200)}}....
                     </p>
                 </div>
             </div>

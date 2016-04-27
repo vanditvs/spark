@@ -1,0 +1,44 @@
+html, body{
+    height: 100%;
+    background: #FFDAB9;
+}
+.theme-content > h1{
+    color : black;
+}
+
+.theme-content {
+    color: black;
+    height: 100%;
+    position: relative;
+}
+
+.theme-content .blog-title {
+    text-align : center;
+    border-bottom: solid 2px rgba(0,0,0, 0.9);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 30px;
+}
+
+.theme-content .blog-title > a {
+    text-decoration: none;
+    color: black;
+}
+
+.theme-content .blog-title > .blog-author {
+    float: right;
+    color: white;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.theme-content{
+    margin-top: 50px;
+}
+
+.theme-content .media-object{
+        width: 600px;
+        height: 300px;
+        margin-left: 20px;
+        padding-bottom: 20px;
+}
