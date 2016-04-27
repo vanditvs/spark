@@ -29,6 +29,18 @@
                         <textarea name="content" rows="10" placeholder="Content" required class="form-control input-lg">{{Input::old('content') ? Input::old('content') : $post->content}}</textarea>
                     </div>
                     {{$errors->first('content', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+
+                    <div class="form-group">
+                        <select name="tags[]" data-tags="true" data-maxTags="10" multiple class="form-control input-lg" placeholder="Tags...">
+                            @if($tags)
+                            @foreach ($tags as $tag)
+                            <option value="{{$tag}}">{{$tag}}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    {{$errors->first('tags', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-block btn-lg"> Update Post</button>
                     </div>

@@ -21,12 +21,23 @@
                 {{$errors->first('content', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
 
                 <div class="form-group">
+                    <select name="tags[]" data-tags="true" data-maxTags="10" multiple class="form-control input-lg" placeholder="Tags...">
+                        @if(Input::old('tags'))
+                            @foreach (Input::old('tags') as $tag)
+                                <option value="{{$tag}}">{{$tag}}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
+                {{$errors->first('tags', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+
+                <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block btn-lg"> Create Post</button>
                 </div>
             </div>
             <div class="col-lg-5 col-md-5">
                 <div class="panel panel-default">
-                <div class="panel-heading">Featured Image</div>
+                    <div class="panel-heading">Featured Image</div>
                     <div class="panel-body">
                         <img src="{{asset('images/featured-image.png')}}" class="admin-post-image img-responsive" alt="featured_image">
                     </div>

@@ -1,9 +1,9 @@
 html, body{
     height: 100%;
-    background: #FFDAB9;
+    background: #222;
 }
 .theme-content > h1{
-    color : black;
+    color : #fff;
 }
 
 .theme-content {
@@ -12,33 +12,41 @@ html, body{
     position: relative;
 }
 
+.theme-content .container {
+    background: #fff;
+    box-shadow: 5px 5px 10px #000, -5px 5px 10px #000;
+}
+
 .theme-content .blog-title {
-    text-align : center;
-    border-bottom: solid 2px rgba(0,0,0, 0.9);
-    padding-top: 40px;
-    padding-bottom: 40px;
+    border-bottom: solid 2px #ddd;
+    padding: 30px;
+    margin-top: 0;
     margin-bottom: 30px;
 }
 
 .theme-content .blog-title > a {
     text-decoration: none;
-    color: black;
+    color: limegreen;
 }
 
 .theme-content .blog-title > .blog-author {
     float: right;
-    color: white;
+    color: #999;
     font-size: 14px;
     margin-top: 40px;
 }
 
-.theme-content{
-    margin-top: 50px;
+.theme-content .blog-post{
+    border-bottom: solid 1px #ddd;
 }
 
 .theme-content .media-object{
-        width: 600px;
-        height: 300px;
-        margin-left: 20px;
-        padding-bottom: 20px;
+    width: 600px;
+    height: 300px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+}
+
+.theme-content .blog-posts .blog-post-title {
+    color: limegreen;
 }

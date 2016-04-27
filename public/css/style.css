@@ -161,3 +161,10 @@ a:hover{
 .page-header .btn{
     margin-top: 10px;
 }
+
+.spark-notice {
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+    font-weight: bold;
+}

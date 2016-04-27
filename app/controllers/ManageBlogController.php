@@ -33,10 +33,10 @@ class ManageBlogController extends BaseController{
         $user = Auth::user();
         $blog = $user->blogs()->findOrFail($id);
 
-//Fetch User Input
-        $input = Input::only("title", "content", "featured-image");
+        //Fetch User Input
+        $input = Input::only("title", "content", "featured-image", "tags");
 
-//Validation Rules
+        //Validation Rules
         $rules = array(
             'title' => 'required|string',
             'content' => 'required|string',
@@ -47,15 +47,33 @@ class ManageBlogController extends BaseController{
             'featured-image.max' => 'Image must be less than 1MB.'
             );
 
-//Validate user input with rules
+        //Validate user input with rules
         $validator = Validator::make($input, $rules, $messages);
 
-//Check if validation failed
+        //Check if validation failed
         if($validator->fails()){
-//Redirect to sign up page with errors and user input
+        //Redirect to sign up page with errors and user input
             return Redirect::route('create-blog-post', [$blog->id])->withErrors($validator)->withInput($input);
         }
 
+        $tagIds = [];
+        // $input['tags'] = ['apple', 'magic', 'laptop']
+        foreach ($input['tags'] as $tag) {
+            //Find tag
+            $existingTag = Tag::where('name', '=', $tag)->first();
+
+            //If the tag doesn't exists
+            if(!$existingTag) {
+                //Create new tag
+                $existingTag = Tag::create([ 'name' => $tag ]);
+            }
+
+            //Add the tag ID to the tagIds array
+            $tagIds[] = $existingTag->id;
+        }
+
+
+        //Handle Feautred Image Upload
         $imageName = null;
         if(Input::hasFile('featured-image')){
             $featured_image = Input::file('featured-image');
@@ -67,6 +85,7 @@ class ManageBlogController extends BaseController{
         }
         $input['slug'] = Str::slug($input['title']) . "-" . str_random();
 
+        //Create Post
         $post = $blog->posts()->create([
             'title' => $input['title'],
             'content' => $input['content'],
@@ -75,13 +94,18 @@ class ManageBlogController extends BaseController{
             'user_id' => $user->id,
             ]);
 
-//Check if blog created
+        //If post was created
         if($post){
-//Blog created, redirect to login page
+
+            //Sync Post Tags
+            //Attach new tags, removed unadded tags.
+            $post->tags()->sync($tagIds);
+
+            //Blog created, redirect to login page
             return Redirect::route('manage-blog-posts', $blog->id);
         }
 
-//Blog not created, redirect to signup page with error message and user input
+        //Blog not created, redirect to signup page with error message and user input
         return Redirect::route('create-blog-post', $blog->id)->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
@@ -90,7 +114,11 @@ class ManageBlogController extends BaseController{
         $user = Auth::user();
         $blog = $user->blogs()->findOrFail($id);
         $post = $blog->posts()->findOrFail($post_id);
-        $data = array('blog' => $blog, 'post' => $post);
+
+        $postTags = $post->tags->lists('name');
+        $tags = Input::old('tags') ? Input::old('tags') : $postTags;
+
+        $data = array('blog' => $blog, 'post' => $post, 'tags' => $tags);
         return View::make('admin.blog.post.edit')->with($data);
     }
 
@@ -100,10 +128,10 @@ class ManageBlogController extends BaseController{
         $blog = $user->blogs()->findOrFail($id);
         $post = $blog->posts()->findOrFail($post_id);
 
-//Fetch User Input
-        $input = Input::only("title", "content", "featured-image");
+        //Fetch User Input
+        $input = Input::only("title", "content", "featured-image", 'tags');
 
-//Validation Rules
+        //Validation Rules
         $rules = array(
             'title' => 'required|string',
             'content' => 'required|string',
@@ -114,13 +142,29 @@ class ManageBlogController extends BaseController{
             'featured-image.max' => 'Image must be less than 1MB.'
             );
 
-//Validate user input with rules
+        //Validate user input with rules
         $validator = Validator::make($input, $rules, $messages);
 
-//Check if validation failed
+        //Check if validation failed
         if($validator->fails()){
-//Redirect to sign up page with errors and user input
+            //Redirect to sign up page with errors and user input
             return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors($validator)->withInput($input);
+        }
+
+        $tagIds = [];
+        // $input['tags'] = ['apple', 'magic', 'laptop']
+        foreach ($input['tags'] as $tag) {
+            //Find tag
+            $existingTag = Tag::where('name', '=', $tag)->first();
+
+            //If the tag doesn't exists
+            if(!$existingTag) {
+                //Create new tag
+                $existingTag = Tag::create([ 'name' => $tag ]);
+            }
+
+            //Add the tag ID to the tagIds array
+            $tagIds[] = $existingTag->id;
         }
 
         $imageName = $post->featured_image;
@@ -147,13 +191,18 @@ class ManageBlogController extends BaseController{
             'featured_image' => $imageName
             ]);
 
-//Check if blog created
+        //Check if post updated
         if($updatePost){
-//Blog created, redirect to login page
+
+            //Sync Post Tags
+            //Attach new tags, removed unadded tags.
+            $post->tags()->sync($tagIds);
+
+            //Post updated, redirect to login page
             return Redirect::route('edit-blog-post', [$blog->id, $post->id])->with(['message' => 'Post was updated.']);
         }
 
-//Blog not created, redirect to signup page with error message and user input
+        //Blog not created, redirect to signup page with error message and user input
         return Redirect::route('edit-blog-post', [$blog->id, $post->id])->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
@@ -201,56 +250,56 @@ class ManageBlogController extends BaseController{
 
     public function customize($id)
     {
-       $user = Auth::user();
-       $blog = $user->blogs()->findOrFail($id);
+     $user = Auth::user();
+     $blog = $user->blogs()->findOrFail($id);
 
-       $availableThemes = Config::get('themes');
+     $availableThemes = Config::get('themes');
 
-       $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
-       return View::make('admin.blog.customize')->with($data);
-   }
+     $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
+     return View::make('admin.blog.customize')->with($data);
+ }
 
-   public function submitCustomize($id)
-   {
-        $user = Auth::user();
-        $blog = $user->blogs()->findOrFail($id);
+ public function submitCustomize($id)
+ {
+    $user = Auth::user();
+    $blog = $user->blogs()->findOrFail($id);
 
         //Fetch User Input
-        $input = Input::only("title", "theme");
+    $input = Input::only("title", "theme");
 
         //Validation Rules
-        $rules = array(
-            'title' => 'required|string',
-            'theme' => 'required|string'
-            );
+    $rules = array(
+        'title' => 'required|string',
+        'theme' => 'required|string'
+        );
 
-        $availableThemes = Config::get('themes');
+    $availableThemes = Config::get('themes');
 
-        if(!isset($availableThemes[$input['theme']])) {
-            return Redirect::route('manage-blog-customize', [$blog->id])->with(['error_message' => "Invalid theme!"])->withInput($input);
-        }
+    if(!isset($availableThemes[$input['theme']])) {
+        return Redirect::route('manage-blog-customize', [$blog->id])->with(['error_message' => "Invalid theme!"])->withInput($input);
+    }
 
         //Validate user input with rules
-        $validator = Validator::make($input, $rules);
+    $validator = Validator::make($input, $rules);
 
         //Check if validation failed
-        if($validator->fails()){
+    if($validator->fails()){
             //Redirect to sign up page with errors and user input
-            return Redirect::route('manage-blog-customize', [$blog->id])->withErrors($validator)->withInput($input);
-        }
+        return Redirect::route('manage-blog-customize', [$blog->id])->withErrors($validator)->withInput($input);
+    }
 
-        $updated = $blog->update([
-            'title' => $input['title'],
-            'theme' => $input['theme']
-            ]);
+    $updated = $blog->update([
+        'title' => $input['title'],
+        'theme' => $input['theme']
+        ]);
 
         //Check if blog updated
-        if($updated){
+    if($updated){
             //Blog updated, redirect to customize page
-            return Redirect::route('manage-blog-customize', $blog->id)->with(['message' => "Blog updated!"]);
-        }
+        return Redirect::route('manage-blog-customize', $blog->id)->with(['message' => "Blog updated!"]);
+    }
 
         //Blog not updated, redirect to signup page with error message and user input
-        return Redirect::route('manage-blog-customize', $blog->id)->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
-    }
+    return Redirect::route('manage-blog-customize', $blog->id)->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
+}
 }

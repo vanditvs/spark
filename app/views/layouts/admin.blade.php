@@ -6,6 +6,7 @@
     <title>{{$pageTitle or 'Spark'}}</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tags.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/animation.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">

@@ -26,6 +26,12 @@
         <div class="theme-content">
             @yield('site')
         </div>
+
+        <div class="container">
+            <div class="spark-notice">
+                This blog is powered by <a href="{{url('/')}}">Spark</a>. Theme: <b>{{themeName($blog->theme)}}</b>
+            </div>
+        </div>
     </div>
     @include('partials.footer')
     @yield('theme-javascript')
