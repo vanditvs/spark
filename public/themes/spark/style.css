@@ -38,3 +38,9 @@ html, body {
     height: 300px;
     object-fit: cover;
 }
+
+.theme-content .blog-post iframe {
+    width: 100%;
+    min-height: 300px;
+    max-width: 100%;
+}
