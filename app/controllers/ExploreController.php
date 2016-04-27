@@ -5,8 +5,9 @@ class ExploreController extends BaseController{
     public function explorePage()
     {
         $blogs = Blog::all();
-        $data = array('allblogs' => $blogs, 'title' => "Blogs");
-        return View::make('explore')->with($data);
+        $tags = Tag::all();
+        $data = array('allblogs' => $blogs, 'title' => "Blogs", 'alltags' => $tags);
+        return View::make('explore.index')->with($data);
     }
 
     public function searchPage()
