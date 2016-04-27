@@ -27,7 +27,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * Mass Assignment
 	 * @var array
 	 */
-	protected $fillable = array('name', 'username', 'email', 'password');
+	protected $fillable = array('name', 'username', 'email', 'password', 'picture');
 
 	public function blogs()
 	{

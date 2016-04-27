@@ -74,3 +74,7 @@ Route::get('explore/tags/{id}', array('as' => 'explore-tags', 'uses' => 'Explore
 Route::get('blogs/{slug}', array('as' => "view-blog", 'uses' => "BlogsController@viewBlog"));
 //Blog Post
 Route::get('blogs/{slug}/posts/{post_slug}', array('as' => "view-blog-post", 'uses' => "BlogsController@viewBlogPost"));
+
+//profile
+Route::get('profile/settings', array('as' => 'profile-settings', 'before' => 'auth', 'uses' => 'UsersController@profileSettings'));
+Route::post('profile/settings', array('as' => 'profile-settings-submit', 'uses' => 'UsersController@profileSettingsSubmit'));

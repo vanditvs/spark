@@ -66,3 +66,12 @@ function themeName($theme)
 
     return $theme['name'];
 }
+
+function profileImage($name = null)
+{
+    if($name) {
+        return url('/').'/uploads/users/'.$name;
+    }
+
+    return asset('images/profile-image.png');
+}

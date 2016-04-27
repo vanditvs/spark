@@ -168,3 +168,8 @@ a:hover{
     text-align: center;
     font-weight: bold;
 }
+
+.user-image{
+    height: auto;
+    width: 100%;
+}
