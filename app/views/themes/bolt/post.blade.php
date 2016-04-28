@@ -12,9 +12,14 @@
         <div class="caption">
             <h3>
                 <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
-            </h3>
+            </h3><br>
+            <div class="post-tags">
+                @foreach ($post->tags as $tag)
+                    <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
+                @endforeach
+            </div>
             <p>
-                {{$post->content}}
+               <br><br> {{$post->content}}
             </p>
         </div>
     </div>

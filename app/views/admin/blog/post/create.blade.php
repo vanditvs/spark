@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-5 col-md-5">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Featured Image</div>
+                    <div class="panel-heading">Post Image</div>
                     <div class="panel-body">
                         <img src="{{asset('images/featured-image.png')}}" class="admin-post-image img-responsive" alt="featured_image">
                     </div>

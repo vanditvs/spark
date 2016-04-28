@@ -13,9 +13,10 @@
                 <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">
                     <img class="media-object" src="{{featuredImage($post->featured_image)}}" >
                 </a>
-                <div class="post-tags">
+                <div class="post-tags pull-right">
                     @foreach ($post->tags as $tag)
                     <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
+                    <br>
                     @endforeach
                 </div>
             </div>

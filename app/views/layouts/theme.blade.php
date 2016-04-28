@@ -29,7 +29,7 @@
 
         <div class="container">
             <div class="spark-notice">
-                This blog is powered by <a href="{{url('/')}}">Spark</a>. Theme: <b>{{themeName($blog->theme)}}</b>
+                This blog is powered by <a href="{{url('/')}}">Spark</a>. Theme: <b><u>{{themeName($blog->theme)}}</u></b>
             </div>
         </div>
     </div>

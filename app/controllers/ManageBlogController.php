@@ -250,17 +250,17 @@ class ManageBlogController extends BaseController{
 
     public function customize($id)
     {
-     $user = Auth::user();
-     $blog = $user->blogs()->findOrFail($id);
+       $user = Auth::user();
+       $blog = $user->blogs()->findOrFail($id);
 
-     $availableThemes = Config::get('themes');
+       $availableThemes = Config::get('themes');
 
-     $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
-     return View::make('admin.blog.customize')->with($data);
- }
+       $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
+       return View::make('admin.blog.customize')->with($data);
+   }
 
- public function submitCustomize($id)
- {
+   public function submitCustomize($id)
+   {
     $user = Auth::user();
     $blog = $user->blogs()->findOrFail($id);
 

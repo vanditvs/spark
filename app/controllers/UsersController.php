@@ -79,4 +79,11 @@ class UsersController extends BaseController{
         //user not updated, redirect to profile-settings page with error message and user input
         return Redirect::route('profile-settings')->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
+
+    public function profilePage()
+    {
+        $user = Auth::user();
+        $data = array('user' => $user);
+        return View::make('user.profile')->with($data);
+    }
 }

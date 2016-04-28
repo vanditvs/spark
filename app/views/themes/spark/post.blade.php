@@ -10,13 +10,18 @@
     <div class="thumbnail blog-post">
         <img src="{{featuredImage($post->featured_image)}}" class="featured-image">
         <div class="caption">
-            <h3>
-                <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
-            </h3>
-            <p>
-                {{$post->content}}
-            </p>
+         <div class="post-tags">
+            @foreach ($post->tags as $tag)
+            <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
+            @endforeach
         </div>
+        <h3>
+            <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
+        </h3>
+        <p>
+            {{$post->content}}
+        </p>
     </div>
+</div>
 </div>
 @stop

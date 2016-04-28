@@ -75,6 +75,10 @@ Route::get('blogs/{slug}', array('as' => "view-blog", 'uses' => "BlogsController
 //Blog Post
 Route::get('blogs/{slug}/posts/{post_slug}', array('as' => "view-blog-post", 'uses' => "BlogsController@viewBlogPost"));
 
-//profile
+//profile settings
 Route::get('profile/settings', array('as' => 'profile-settings', 'before' => 'auth', 'uses' => 'UsersController@profileSettings'));
 Route::post('profile/settings', array('as' => 'profile-settings-submit', 'uses' => 'UsersController@profileSettingsSubmit'));
+
+//profile
+Route::get('profile', array('as' => 'profile', 'before' => 'auth', 'uses' => 'UsersController@profilePage'));
+Route::post('profile', array('as' => 'profile-submit', 'uses' => 'UsersController@profileSubmitPage'));

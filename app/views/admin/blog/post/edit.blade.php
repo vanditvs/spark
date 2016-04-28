@@ -33,9 +33,9 @@
                     <div class="form-group">
                         <select name="tags[]" data-tags="true" data-maxTags="10" multiple class="form-control input-lg" placeholder="Tags...">
                             @if($tags)
-                            @foreach ($tags as $tag)
-                            <option value="{{$tag}}">{{$tag}}</option>
-                            @endforeach
+                                @foreach ($tags as $tag)
+                                    <option value="{{$tag}}">{{$tag}}</option>
+                                @endforeach
                             @endif
                         </select>
                     </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-lg-5 col-md-5">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Featured Image</div>
+                        <div class="panel-heading">Post Image</div>
                         <div class="panel-body">
                             <img src="{{featuredImage($post->featured_image)}}" class="admin-post-image img-responsive" alt="featured_image">
                         </div>
