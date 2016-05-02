@@ -22,7 +22,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
                                 <p>
                                     <a href="{{route('manage-blog', array($blog->id))}}" class="btn btn-primary btn-sm">Manage</a>
-                                    <a href="#" class="btn btn-default btn-sm">View</a>
+                                    <a target="_blank" href="{{route('view-blog', $blog->slug)}}" class="btn btn-default btn-sm">View</a>
                                 </p>
                                 <small class="text-muted">Created <b>{{$blog->created_at}}</b></small>
                             </div>

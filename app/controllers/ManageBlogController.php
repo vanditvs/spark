@@ -152,19 +152,21 @@ class ManageBlogController extends BaseController{
         }
 
         $tagIds = [];
-        // $input['tags'] = ['apple', 'magic', 'laptop']
-        foreach ($input['tags'] as $tag) {
-            //Find tag
-            $existingTag = Tag::where('name', '=', $tag)->first();
+        if(is_array($input['tags'])){
+            // $input['tags'] = ['apple', 'magic', 'laptop']
+            foreach ($input['tags'] as $tag) {
+                //Find tag
+                $existingTag = Tag::where('name', '=', $tag)->first();
 
-            //If the tag doesn't exists
-            if(!$existingTag) {
-                //Create new tag
-                $existingTag = Tag::create([ 'name' => $tag ]);
+                //If the tag doesn't exists
+                if(!$existingTag) {
+                    //Create new tag
+                    $existingTag = Tag::create([ 'name' => $tag ]);
+                }
+
+                //Add the tag ID to the tagIds array
+                $tagIds[] = $existingTag->id;
             }
-
-            //Add the tag ID to the tagIds array
-            $tagIds[] = $existingTag->id;
         }
 
         $imageName = $post->featured_image;
@@ -250,17 +252,17 @@ class ManageBlogController extends BaseController{
 
     public function customize($id)
     {
-       $user = Auth::user();
-       $blog = $user->blogs()->findOrFail($id);
+     $user = Auth::user();
+     $blog = $user->blogs()->findOrFail($id);
 
-       $availableThemes = Config::get('themes');
+     $availableThemes = Config::get('themes');
 
-       $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
-       return View::make('admin.blog.customize')->with($data);
-   }
+     $data = array('blog' => $blog, 'availableThemes' => $availableThemes);
+     return View::make('admin.blog.customize')->with($data);
+ }
 
-   public function submitCustomize($id)
-   {
+ public function submitCustomize($id)
+ {
     $user = Auth::user();
     $blog = $user->blogs()->findOrFail($id);
 

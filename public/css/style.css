@@ -173,3 +173,24 @@ a:hover{
     height: auto;
     width: 100%;
 }
+
+/**
+ * profile page
+ */
+
+.cover-img .user-img{
+    width: 160px;
+    height: 160px;
+}
+
+.profile-body{
+    background: url(../images/bg1.jpe) #fff;
+    background-position: 40%;
+    background-size: cover;
+}
+
+.panel-body-fixed{
+    max-height: 380px;
+    overflow: auto;
+}
+

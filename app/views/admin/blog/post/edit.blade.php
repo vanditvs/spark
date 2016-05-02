@@ -39,7 +39,7 @@
                             @endif
                         </select>
                     </div>
-                    {{$errors->first('tags', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
+                    {{$errors->first('tags[]', '<div class="alert alert-block alert-danger well-sm text-center">:message</div>')}}
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-block btn-lg"> Update Post</button>
