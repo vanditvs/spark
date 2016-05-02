@@ -83,8 +83,9 @@ class UsersController extends BaseController{
     public function profilePage()
     {
         $user = Auth::user();
-        $blog = Blog::all();
-        $data = array('user' => $user, 'blog' => $blog);
+        $blog = $user->blogs;
+        $following = $user->follows()->get();
+        $data = array('user' => $user, 'blogs' => $blog, 'following' => $following);
         return View::make('user.profile')->with($data);
     }
 }

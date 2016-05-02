@@ -3,8 +3,9 @@
 class AdminController extends BaseController{
     public function index()
     {
-        $blogs = Auth::user()->blogs;
-        $data = array('allblogs' => $blogs, 'pageTitle' => 'Admin');
+        $user = Auth::user();
+        $blogs = $user->blogs;
+        $data = array('allblogs' => $blogs, 'pageTitle' => 'Admin', 'user' => $user);
         return View::make('admin.index')->with($data);
     }
 

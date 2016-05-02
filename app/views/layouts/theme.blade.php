@@ -34,6 +34,8 @@
         </div>
     </div>
     @include('partials.footer')
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5727cee3b415704f"></script>
     @yield('theme-javascript')
 </body>
 </html>

@@ -75,3 +75,16 @@ function profileImage($name = null)
 
     return asset('images/profile-image.png');
 }
+
+function coverImage($name = null)
+{
+    if($name) {
+        return url('/').'/uploads/covers/'.$name;
+    }
+
+    return asset('images/cover-image.png');
+}
+
+function getShareButtons() {
+    return '<div class="addthis_sharing_toolbox"></div>';
+}

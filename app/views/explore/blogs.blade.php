@@ -12,7 +12,7 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <a target="_blank" href="{{route('view-blog', $blog->slug)}}" class="">
+                        <a target="_blank" href="{{route('view-blog', $blog->slug)}}">
                             {{$blog->title}}
                         </a>
                     </h4>

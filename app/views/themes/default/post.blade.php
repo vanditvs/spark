@@ -21,6 +21,9 @@
                 <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
                 @endforeach
             </div>
+            <div class="share-buttons clearfix">
+                {{getShareButtons()}}
+            </div>
         </div>
     </div>
 </div>

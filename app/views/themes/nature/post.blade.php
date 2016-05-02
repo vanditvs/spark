@@ -29,6 +29,9 @@
                 <p>
                     {{$post->content}}
                 </p>
+                <div class="share-buttons clearfix">
+                    {{getShareButtons()}}
+                </div>
             </div>
         </div>
     </div>
