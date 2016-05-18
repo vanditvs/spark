@@ -27,12 +27,12 @@
   <div class="btn-group btn-group-justified" role="group">
     <div class="btn-group" role="group">
       <button class="btn btn-default" type="button">
-        Following <span class="badge">{{$user->follows()->count()}}</span>
+        Blogs <span class="badge">{{$user->blogs()->count()}}</span>
       </button>
     </div>
     <div class="btn-group" role="group">
       <button class="btn btn-default" type="button">
-        Blogs <span class="badge">{{$user->blogs()->count()}}</span>
+        Following <span class="badge">{{$user->follows()->count()}}</span>
       </button>
     </div>
   </div>

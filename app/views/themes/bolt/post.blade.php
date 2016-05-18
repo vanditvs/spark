@@ -15,12 +15,15 @@
             </h3><br>
             <div class="post-tags">
                 @foreach ($post->tags as $tag)
-                    <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
+                <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
                 @endforeach
             </div>
             <p>
-               <br><br> {{$post->content}}
+                <br><br> {{$post->content}}
             </p>
+            <div class="share-buttons clearfix">
+                {{getShareButtons()}}
+            </div>
         </div>
     </div>
 </div>

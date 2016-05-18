@@ -10,7 +10,7 @@
     <div class="thumbnail blog-post">
         <img src="{{featuredImage($post->featured_image)}}" class="featured-image">
         <div class="caption">
-         <div class="post-tags">
+           <div class="post-tags">
             @foreach ($post->tags as $tag)
             <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>
             @endforeach
@@ -21,6 +21,9 @@
         <p>
             {{$post->content}}
         </p>
+        <div class="share-buttons clearfix">
+            {{getShareButtons()}}
+        </div>
     </div>
 </div>
 </div>
