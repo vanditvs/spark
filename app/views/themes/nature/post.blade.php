@@ -13,6 +13,19 @@
                 <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">
                     <img class="media-object" src="{{featuredImage($post->featured_image)}}" >
                 </a>
+                <div class="post-content">
+                    <small>
+                        @if(Auth::user()->likes()->find($post->id))
+                        <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> <a href="{{route('unlike', $post->id)}}"><b>Liked</b></a>
+                        @else
+                        <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> <a href="{{route('like', $post->id)}}">Like</a>
+                        @endif
+                    </small>
+                    <span class="text-muted">|</span>
+                    <small>
+                        <span class="text-primary"><i class="glyphicon glyphicon-comment"></i> {{$post->comments()->count()}}</span> Comments
+                    </small>
+                </div>
                 <div class="post-tags pull-right">
                     @foreach ($post->tags as $tag)
                     <a href="{{route('explore-tags', $tag->id)}}" class="label label-default">#{{$tag->name}}</a>

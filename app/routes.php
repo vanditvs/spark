@@ -94,3 +94,8 @@ Route::get('follow/{id}', array('as' => 'follow', 'before' => 'auth', 'uses' => 
 //unfollow
 Route::get('unfollow/{id}', array('as' => 'unfollow', 'before' => 'auth', 'uses' => 'UsersController@unfollow'));
 
+//like
+Route::get('like/{id}', array('as' => 'like', 'before' => 'auth', 'uses' => 'UsersController@like'));
+
+//unlike
+Route::get('unlike/{id}', array('as' => 'unlike', 'before' => 'auth', 'uses' => 'UsersController@unlike'));

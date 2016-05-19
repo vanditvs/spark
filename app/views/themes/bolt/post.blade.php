@@ -10,6 +10,19 @@
     <div class="thumbnail blog-post">
         <img src="{{featuredImage($post->featured_image)}}" class="featured-image">
         <div class="caption">
+            <div class="post-content">
+                <small>
+                    @if(Auth::user()->likes()->find($post->id))
+                    <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> <a href="{{route('unlike', $post->id)}}"><b>Liked</b></a>
+                    @else
+                    <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> <a href="{{route('like', $post->id)}}">Like</a>
+                    @endif
+                </small>
+                <span class="text-muted">|</span>
+                <small>
+                    <span class="text-primary"><i class="glyphicon glyphicon-comment"></i> {{$post->comments()->count()}}</span> Comments
+                </small>
+            </div>
             <h3>
                 <a href="{{route('view-blog-post', [$blog->slug, $post->slug])}}">{{$post->title}}</a>
             </h3><br>

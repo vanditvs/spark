@@ -32,7 +32,7 @@
                                             <h4 class="media-heading">{{$post->title}}</h4>
                                         </p>
                                         <small>
-                                            <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> Likes
+                                            <span class="text-primary"><i class="glyphicon glyphicon-thumbs-up"></i> {{$post->likers()->count()}}</span> <a href="{{route('like', $post->id)}}">Likes</a>
                                         </small>
                                         <span class="text-muted">|</span>
                                         <small>

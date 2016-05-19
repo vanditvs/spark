@@ -110,4 +110,20 @@ class UsersController extends BaseController{
         return Redirect::back()->with('user_unfollowed', true);
     }
 
+    public function like($id)
+    {
+        $user = Auth::user();
+        $post = Post::where('id', '=', $id)->first();
+        $like = $post->likers()->sync([$user->id]);
+        return Redirect::back();
+    }
+
+    public function unlike($id)
+    {
+        $user = Auth::user();
+        $post = Post::where('id', '=', $id)->first();
+        $like = $post->likers()->detach($user->id);
+        return Redirect::back();
+    }
+
 }
