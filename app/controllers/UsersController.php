@@ -80,9 +80,14 @@ class UsersController extends BaseController{
         return Redirect::route('profile-settings')->withErrors(array('error_message' => "Something went wrong! Try again!"))->withInput($input);
     }
 
-    public function profilePage()
+    public function profilePage($id = null)
     {
-        $user = Auth::user();
+        if($id === null){
+            $user = Auth::user();
+        }
+        else{
+            $user = User::findOrFail($id);
+        }
         $blog = $user->blogs;
         $following = $user->follows()->get();
         $data = array('user' => $user, 'blogs' => $blog, 'following' => $following);

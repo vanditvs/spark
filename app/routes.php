@@ -86,4 +86,4 @@ Route::get('profile/settings', array('as' => 'profile-settings', 'before' => 'au
 Route::post('profile/settings', array('as' => 'profile-settings-submit', 'uses' => 'UsersController@profileSettingsSubmit'));
 
 //profile
-Route::get('profile', array('as' => 'profile', 'before' => 'auth', 'uses' => 'UsersController@profilePage'));
+Route::get('profile/{id?}', array('as' => 'profile', 'before' => 'auth', 'uses' => 'UsersController@profilePage'));
