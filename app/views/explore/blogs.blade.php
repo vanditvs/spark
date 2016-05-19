@@ -1,4 +1,11 @@
 <div class="row">
+    @if(Session::has('user_followed'))
+    <div class="alert alert-success alert-blog well-sm text-center">User Followed!</div>
+    @endif
+
+    @if(Session::has('user_unfollowed'))
+    <div class="alert alert-success alert-blog well-sm text-center">User Unfollowed!</div>
+    @endif
     @foreach ($allblogs as $blog)
     <div class="col-sm-6 col-md-6">
         <div class="panel panel-default">
@@ -23,7 +30,11 @@
                             <b>Followers: {{$blog->followers()->count()}}</b>
                         </p>
                         <p>
-                            <a href="#" class="btn btn-default" role="button">Follow</a>
+                            @if(Auth::user()->follows()->find($blog->id))
+                            <a href="{{route('unfollow', $blog->id)}}" class="btn btn-primary" role="button">Following</a>
+                            @else
+                            <a href="{{route('follow', $blog->id)}}" class="btn btn-default" role="button">Follow</a>
+                            @endif
                         </p>
                     </div>
                 </div>

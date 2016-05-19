@@ -87,3 +87,10 @@ Route::post('profile/settings', array('as' => 'profile-settings-submit', 'uses' 
 
 //profile
 Route::get('profile/{id?}', array('as' => 'profile', 'before' => 'auth', 'uses' => 'UsersController@profilePage'));
+
+//follow
+Route::get('follow/{id}', array('as' => 'follow', 'before' => 'auth', 'uses' => 'UsersController@follow'));
+
+//unfollow
+Route::get('unfollow/{id}', array('as' => 'unfollow', 'before' => 'auth', 'uses' => 'UsersController@unfollow'));
+

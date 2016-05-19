@@ -93,4 +93,21 @@ class UsersController extends BaseController{
         $data = array('user' => $user, 'blogs' => $blog, 'following' => $following);
         return View::make('user.profile')->with($data);
     }
+
+    public function follow($id)
+    {
+        $user = Auth::user();
+        $blog = Blog::where('id', '=', $id)->first();
+        $follow = $blog->followers()->sync([$user->id]);
+        return Redirect::back()->with('user_followed', true);
+    }
+
+    public function unfollow($id)
+    {
+        $user = Auth::user();
+        $blog = Blog::where('id', '=', $id)->first();
+        $follow = $blog->followers()->detach($user->id);
+        return Redirect::back()->with('user_unfollowed', true);
+    }
+
 }
