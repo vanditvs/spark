@@ -50,6 +50,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
         //delete post
         Route::post('{id}/posts/{post_id}/delete', array('as' => 'delete-blog-post', 'uses' => 'ManageBlogController@deletePost'));
 
+         //delete blog
+        Route::post('{id}/delete', array('as' => 'delete-blog', 'uses' => 'ManageBlogController@deleteBlog'));
+
         //blog comments
         Route::get('{id}/comments', array('as' => 'manage-blog-comments', 'uses' => 'ManageBlogController@comments'));
         //delete comment
@@ -74,6 +77,9 @@ Route::get('explore/tags/{id}', array('as' => 'explore-tags', 'uses' => 'Explore
 Route::get('blogs/{slug}', array('as' => "view-blog", 'uses' => "BlogsController@viewBlog"));
 //Blog Post
 Route::get('blogs/{slug}/posts/{post_slug}', array('as' => "view-blog-post", 'uses' => "BlogsController@viewBlogPost"));
+
+//Comment on Blog Post
+Route::post('blogs/{slug}/posts/{post_slug}/comment', array('as' => "comment-blog-post", 'uses' => "BlogsController@commentBlogPost"));
 
 //profile settings
 Route::get('profile/settings', array('as' => 'profile-settings', 'before' => 'auth', 'uses' => 'UsersController@profileSettings'));

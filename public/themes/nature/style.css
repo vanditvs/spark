@@ -50,3 +50,10 @@ html, body{
 .theme-content .blog-posts .blog-post-title {
     color: limegreen;
 }
+
+.comment-avatar {
+    width: 50px !important;
+    height: 60px !important;
+    margin-left: 0;
+    padding-bottom: 0;
+}

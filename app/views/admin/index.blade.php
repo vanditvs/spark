@@ -7,6 +7,11 @@
             <a href="{{route('create-blog')}}" class="btn btn-success btn-sm pull-right"> Create Blog</a>
         </div>
         <div class="row">
+            @if(Session::has('delete_message'))
+            <div class="alert alert-success">
+                {{Session::get('delete_message')}}
+            </div>
+            @endif
             @foreach($allblogs as $blog)
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="panel panel-default">

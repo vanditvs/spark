@@ -24,7 +24,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <a href="#">
-                                        <img class="media-object" src="https://randomuser.me/api/portraits/men/{{$comment->id}}.jpg" alt="...">
+                                        <img class="media-object" src="{{profileImage($comment->user->picture)}}" width="120px" height="120px">
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -36,6 +36,9 @@
                                     <p>
                                         <b>{{$comment->message}}</b>
                                     </p>
+                                    <b>Post :
+                                        {{$comment->post->title}}
+                                    </b>
                                     <p class="small">
                                         Commented on: {{$comment->created_at}}
                                     </p>

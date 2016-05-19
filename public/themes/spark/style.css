@@ -44,3 +44,10 @@ html, body {
     min-height: 300px;
     max-width: 100%;
 }
+
+.comment-avatar {
+    width: 50px !important;
+    height: 50px !important;
+    margin-left: 0;
+    padding-bottom: 0;
+}

@@ -25,6 +25,36 @@
                 <div class="share-buttons clearfix">
                     {{getShareButtons()}}
                 </div>
+                <div class="post-comment-area">
+                    {{$commentForm}}
+
+                    <div class="post-comments">
+                        @if($post->comments()->count())
+                        @foreach($post->comments as $comment)
+                        <div class="media">
+                            <div class="media-left">
+                                <img height="32px" width="32px" class="media-object comment-avatar img-circle" src="{{profileImage($comment->user->picture)}}" alt="...">
+                            </div>
+                            <div class="media-body">
+                                @if(Auth::user()->id === $comment->user_id)
+                                <div class="btn pull-right">
+                                    {{Form::open(array('route' => ['delete-blog-comment', $blog->id, $comment->id], 'class' => 'form form-inline', 'onSubmit' => "return confirm('Delete comment?');"))}}
+                                    <button type="submit" class="btn btn-sm"> Delete</button>
+                                    {{Form::close()}}
+                                </div>
+                                @endif
+                                <h4 class="media-heading">{{$comment->user->name}}</h4>
+                                <p>
+                                    {{$comment->message}}
+                                </p>
+                            </div>
+                        </div>
+                        @endforeach
+                        @else
+                        <p>No comments!</p>
+                        @endif
+                    </div>
+                </div>
             </p>
         </div>
     </div>

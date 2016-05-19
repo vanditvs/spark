@@ -38,3 +38,10 @@ html, body{
     height: 300px;
     object-fit: cover;
 }
+
+.comment-avatar {
+    width: 50px !important;
+    height: 50px !important;
+    margin-left: 0;
+    padding-bottom: 0;
+}s

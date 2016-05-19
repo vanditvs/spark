@@ -219,6 +219,16 @@ class ManageBlogController extends BaseController{
         return Redirect::route('manage-blog-posts', $blog->id)->with(['message' => 'Post was deleted.']);
     }
 
+    public function deleteBlog($id)
+    {
+        $user = Auth::user();
+        $blog = $user->blogs()->findOrFail($id);
+
+        $blog->delete();
+
+        return Redirect::route('admin')->with(['delete_message' => 'Blog was deleted.']);
+    }
+
     public function comments($id)
     {
         $user = Auth::user();
