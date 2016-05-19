@@ -6,7 +6,7 @@ class ExploreController extends BaseController{
     {
         //SELECT b.*, COUNT(f.user_id) follower_count FROM blogs b LEFT JOIN follows f ON b.id = f.blog_id GROUP BY b.id order by follower_count desc;
         $popularBlogs = Blog::with('user')->leftJoin('follows', 'blogs.id', '=', 'follows.blog_id')->select(DB::raw('blogs.*, count(follows.blog_id) follower_count'))->groupBy('blogs.id')->orderBy('follower_count', 'desc')->limit(4)->get();
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('id', 'DESC')->get();
         $tags = Tag::has('posts')->get();
         $data = array('allblogs' => $blogs, 'title' => "Blogs", 'alltags' => $tags, 'popularBlogs' => $popularBlogs);
         return View::make('explore.index')->with($data);

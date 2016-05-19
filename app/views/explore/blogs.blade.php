@@ -16,13 +16,14 @@
                                 {{$blog->title}}
                             </a>
                         </h4>
-                        <p><b>{{"@" . $blog->user->username}}</b></p>
+                        <a href="{{route('profile', $blog->user->id)}}">
+                            <p><b>{{"@" . $blog->user->username}}</b></p>
+                        </a>
                         <p>
                             <b>Followers: {{$blog->followers()->count()}}</b>
                         </p>
                         <p>
                             <a href="#" class="btn btn-default" role="button">Follow</a>
-                            <a href="#" class="btn btn-link" role="button">View <i class="glyphicon glyphicon-sunglasses"></i></a>
                         </p>
                     </div>
                 </div>

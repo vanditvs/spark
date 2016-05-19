@@ -4,7 +4,7 @@ class AdminController extends BaseController{
     public function index()
     {
         $user = Auth::user();
-        $blogs = $user->blogs;
+        $blogs = $user->blogs()->orderBy('id', 'DESC')->get();
         $data = array('allblogs' => $blogs, 'pageTitle' => 'Admin', 'user' => $user);
         return View::make('admin.index')->with($data);
     }
