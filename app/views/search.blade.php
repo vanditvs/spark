@@ -12,7 +12,7 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object" src="https://randomuser.me/api/portraits/men/{{$post->id}}.jpg" alt="...">
+                            <img class="media-object" src="{{profileImage($post->user->picture)}}" width="120px" height="110px">
                         </a>
                     </div>
                     <div class="media-body">

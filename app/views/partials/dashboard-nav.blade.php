@@ -38,27 +38,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- Notifications Menu -->
-        <li class="dropdown notifications-menu">
-          <!-- Menu toggle button -->
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="glyphicon glyphicon-bell"></i>
-            <span class="label label-warning">10</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
-            <li>
-              <!-- Inner Menu: contains the notifications -->
-              <ul class="menu">
-                <li><!-- start notification -->
-                  <a href="#">
-                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                  </a>
-                </li><!-- end notification -->
-              </ul>
-            </li>
-            <li class="footer"><a href="#">View all</a></li>
-          </ul>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="user-pro-img img-circle" src="{{profileImage(Auth::user()->picture)}}"> {{Auth::user()->name}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
