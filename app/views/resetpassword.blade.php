@@ -13,10 +13,17 @@
             <div class="signup-container fadeInUp">
               <h1>Reset password.</h1>
               <div class="signup-form">
-                <form action="{{ action('RemindersController@postRemind') }}" method="post">
+                <form action="{{ action('RemindersController@postReset') }}" method="post">
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Email" required class="form-control input-lg">
                     </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required class="form-control input-lg">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password_confirmation" placeholder="Password (Confirm)" required class="form-control input-lg">
+                    </div>
+                    <input type="hidden" name="token" value="{{$token}}">
                     <button type="submit" class="btn btn-success btn-block btn-lg">Reset</button>
                 </form>
             </div>

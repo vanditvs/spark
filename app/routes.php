@@ -2,6 +2,8 @@
 
 Route::get('/', array('as' => "index", 'uses' => "HomeController@showHomepage"));
 
+Route::controller('password', 'RemindersController');
+
 //Auth Routes
 //Logged in users cannot access these routes
 Route::group(array('prefix' => 'auth', 'before' => 'guest'), function()
