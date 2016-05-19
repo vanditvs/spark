@@ -42,7 +42,9 @@
                                 {{Form::close()}}
                             </div>
                             @endif
-                            <h4 class="media-heading">{{$comment->user->name}}</h4>
+                            <a href="{{route('profile', $comment->user->id)}}">
+                                <h4 class="media-heading">{{$comment->user->name}}</h4>
+                            </a>
                             <p>
                                 {{$comment->message}}
                             </p>
